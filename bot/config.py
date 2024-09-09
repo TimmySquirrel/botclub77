@@ -1,4 +1,0 @@
-token_telegram = '7001360047:AAGs1JvzlL3czxfS9OjnyRZJz8uZYiljuLY'
-token_vk = 'vk1.a.gIbSSjnq5c85LhfPtDUx8M6ZuYdI5SS_zYmdGwU6IxATf9M_KiFp_bzDXeiDTO7_S8pwGoZfYB0PWAjWi7_dk-XeAT6Bydb2tlpP2vyunclU40PDG3Tdrp3uT8YompJcdwJGW86Y_q1adIOaXelDrdF0JiO1Remh4bQdRdzYKlehtWrifz9t4u6jl6FWqmU41oDwA2zlYcJ-dx925Ty6Aw'
-group_id = 118577600
-channel_id = -1002162249193
