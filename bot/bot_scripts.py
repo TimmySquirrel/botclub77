@@ -99,8 +99,8 @@ def MessageReplies(url, post_param):
                                                        "reply_to_message_id": Reply_ID, 
                                                        "question": post_param['poll'][0], 
                                                        "options": json.dumps(post_param['poll'][1]), 
-                                                       "is_anonymous": False}) 
-            
+                                                       "is_anonymous": False})  
+
 if __name__ == '__main__':
     while True:
         try:

@@ -16,16 +16,16 @@ token_telegram = "7001360047:AAGs1JvzlL3czxfS9OjnyRZJz8uZYiljuLY"
 # updater.start_polling()  # поехали!
 
 
-import telebot
+# import telebot
 
-botTimeWeb = telebot.TeleBot(token_telegram)
+# botTimeWeb = telebot.TeleBot(token_telegram)
 
-from telebot import types
+# from telebot import types
 
 
-@botTimeWeb.message_handler(commands=['start'])
-def startBot(message):
-    first_mess = f"<b>{message.from_user.first_name} {message.from_user.last_name}</b>, привет!"
-    botTimeWeb.send_message(message.chat.id, first_mess, parse_mode='html')
+# @botTimeWeb.message_handler(commands=['start'])
+# def startBot(message):
+#     first_mess = f"<b>{message.from_user.first_name} {message.from_user.last_name}</b>, привет!"
+#     botTimeWeb.send_message(message.chat.id, first_mess, parse_mode='html')
 
-botTimeWeb.infinity_polling()
+# botTimeWeb.infinity_polling()
