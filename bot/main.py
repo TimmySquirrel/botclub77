@@ -1,6 +1,6 @@
 import time 
 from bot_scripts import *
-from config import token_vk, channel_id
+from bot_config import token_vk, channel_id
 
 if __name__ == '__main__':
     while True:

@@ -1,6 +1,6 @@
 import vk_api, requests, time, json
 from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
-from config import token_telegram, token_vk, group_id, channel_id 
+from bot_config import token_telegram, token_vk, group_id, channel_id 
 
 
 
