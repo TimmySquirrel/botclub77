@@ -1,6 +1,6 @@
-import bot
+import bot_scripts as scripts
 
-
+scripts.tg_url
 # with open('file/data_repost.json') as file:
 #     json_file = json.load(file)
 # if json_file.get('copy_history') and json_file['text'] == '':
