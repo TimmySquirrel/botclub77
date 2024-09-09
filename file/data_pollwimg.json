@@ -1,0 +1,112 @@
+{
+    "inner_type": "wall_wallpost",
+    "can_edit": 1,
+    "created_by": 15544612,
+    "can_delete": 1,
+    "donut": {
+        "is_donut": false
+    },
+    "comments": {
+        "count": 0
+    },
+    "marked_as_ads": 0,
+    "compact_attachments_before_cut": 0,
+    "hash": "3bzp7len5rEiRMbKwGiQM5uSepY",
+    "header": {
+        "photo": {
+            "source_id": -118577600
+        },
+        "title": {
+            "source_id": -118577600
+        },
+        "date": 1725807125
+    },
+    "type": "post",
+    "attachments": [
+        {
+            "type": "poll",
+            "poll": {
+                "multiple": false,
+                "end_date": 0,
+                "closed": false,
+                "is_board": false,
+                "can_edit": true,
+                "can_vote": true,
+                "can_report": false,
+                "can_share": true,
+                "created": 1725807124,
+                "id": 977757783,
+                "owner_id": -118577600,
+                "question": "\u0412\u043e\u043f\u0440\u043e\u0441",
+                "votes": 0,
+                "disable_unvote": false,
+                "anonymous": false,
+                "answer_ids": [],
+                "embed_hash": "977757783_da25455be206afb528",
+                "photo": {
+                    "color": "FBBF09",
+                    "id": 457239098,
+                    "images": [
+                        {
+                            "url": "https://sun9-39.userapi.com/impf/HTWdHpxh3s-HzwEcjwhDRqKPbiNJtE8CtMxzOw/4-vX3jo1s50.jpg?quality=90&proxy=1&sign=7104b9d88eb298314d11aeb3b7206030&c_uniq_tag=CvPC9dHBfrNiJiqmdBwsiuV2azVxJP1cguoaptiL1gE&type=vote",
+                            "width": 601,
+                            "height": 600
+                        },
+                        {
+                            "url": "https://sun9-39.userapi.com/impf/HTWdHpxh3s-HzwEcjwhDRqKPbiNJtE8CtMxzOw/4-vX3jo1s50.jpg?size=510x200&quality=96&crop=0,0,601,236&sign=32a09b791b2df1b05534d6a5bbdeeb32&c_uniq_tag=DM5SBDwZ46M_tu_uRtK1M4kiPhtzs0i233Lzclqx_i8&type=vote",
+                            "width": 510,
+                            "height": 200
+                        },
+                        {
+                            "url": "https://sun9-39.userapi.com/impf/HTWdHpxh3s-HzwEcjwhDRqKPbiNJtE8CtMxzOw/4-vX3jo1s50.jpg?size=601x400&quality=96&crop=0,0,601,400&sign=20be77156b8c18d7d0a6efed65a30e22&c_uniq_tag=sml0hECwyVteKn7g_hT9XbWCRQrwRHAwt_OywB4KN30&type=vote",
+                            "width": 601,
+                            "height": 400
+                        },
+                        {
+                            "url": "https://sun9-39.userapi.com/impf/HTWdHpxh3s-HzwEcjwhDRqKPbiNJtE8CtMxzOw/4-vX3jo1s50.jpg?size=100x45&quality=96&crop=0,0,601,270&sign=677d5ead7ea8ff914eeb54831d583c83&c_uniq_tag=mOmplJkTG2JzU0v6KayUMB-CNHYvpiCypBkbgjVksNc&type=vote",
+                            "width": 100,
+                            "height": 45
+                        },
+                        {
+                            "url": "https://sun9-39.userapi.com/impf/HTWdHpxh3s-HzwEcjwhDRqKPbiNJtE8CtMxzOw/4-vX3jo1s50.jpg?size=200x90&quality=96&crop=0,0,601,270&sign=7561316d1a1ee3e1bbd4ef44a708bc15&c_uniq_tag=Eyd3uy20EzSAOMi3N0HQgN2Gk5nExia340QBgpT0olU&type=vote",
+                            "width": 200,
+                            "height": 90
+                        },
+                        {
+                            "url": "https://sun9-39.userapi.com/impf/HTWdHpxh3s-HzwEcjwhDRqKPbiNJtE8CtMxzOw/4-vX3jo1s50.jpg?size=300x135&quality=96&crop=0,0,601,270&sign=b3879b2908e688f84f02af92911cd5d4&c_uniq_tag=twN5DKjsvod57BVQblITwvGedvOl91do5Od169Q9lt8&type=vote",
+                            "width": 300,
+                            "height": 135
+                        }
+                    ]
+                },
+                "answers": [
+                    {
+                        "id": 2609237444,
+                        "rate": 0.0,
+                        "text": "\u041e\u0442\u0432\u0435\u0442",
+                        "votes": 0
+                    },
+                    {
+                        "id": 2609237445,
+                        "rate": 0.0,
+                        "text": "\u041e\u0442\u0432\u0435\u0442",
+                        "votes": 0
+                    }
+                ],
+                "author_id": -118577600
+            },
+            "style": "full"
+        }
+    ],
+    "attachments_meta": {
+        "primary_mode": "single"
+    },
+    "date": 1725807125,
+    "from_id": -118577600,
+    "id": 84,
+    "is_favorite": false,
+    "reaction_set_id": "reactions",
+    "owner_id": -118577600,
+    "post_type": "post",
+    "text": "\u0412\u043e\u043f\u0440\u043e\u0441"
+}
