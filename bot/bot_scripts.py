@@ -6,6 +6,7 @@ from bot_config import token_telegram, token_vk, group_id, channel_id
 
 tg_url = "https://api.telegram.org/bot" + token_telegram
 
+
 # формируем свой JSON параметров по полученому из VK
 def GetValuesJSON(aJSON:dict):
     # инициализируем структуру данных на выходе
@@ -86,6 +87,7 @@ def MessageReplies(url, post_param):
     print("MessageReplies start ...") 
     if post_param == None : exit()
     r = requests.post(url + '/getUpdates')
+    print(f"MessageReplies /getUpdates [{r.status_code}]") 
     if r.status_code == 200:
         Dict = r.json()
         Len_Dict = len(Dict['result'])-1
