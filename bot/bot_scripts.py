@@ -42,7 +42,7 @@ def GetMsgFromVK(token_vk):
     print("GetMsgFromVK start ...")
     vk = vk_api.VkApi(token=token_vk)
     longpoll = VkBotLongPoll(vk, group_id=group_id)
-    print("Connect to service VK. Session.verify -", longpoll.session.verify.__str__())
+    print(f"GetMsgFromVK connect to VK service VK.[{longpoll.session.verify.__str__()}]")
     # logger.info("Подключение к VK. Session.verify - " + longpoll.session.verify.__str__())
     # слушаем отклики сервака
     for event in longpoll.listen():
@@ -88,42 +88,42 @@ def pinChatMessage(url, chat_id, message_id):
 # комметрируем пост, параметры поста получаем через getUpdates
 def MessageReplies(url, post_param):
     print("MessageReplies start ...") 
-    if post_param == None : exit()
-    r = requests.post(url + '/getUpdates')
-    print(f"MessageReplies /getUpdates [{r.status_code}]") 
-    if r.status_code == 200:
-        Dict = r.json()
-        Len_Dict = len(Dict['result'])-1
-        Last_Result = Dict['result'][Len_Dict]
-        Owner_Channel_ID = Last_Result['message']['chat']['id']
-        Reply_ID = Last_Result['message']['message_id'] 
-        if post_param['text'] != '':
-            # logger.info("post_param['text'] != ''")
-            r = requests.post(url + '/sendMessage', data={"chat_id": Owner_Channel_ID, 
-                                                          "reply_to_message_id": Reply_ID, 
-                                                          "text": post_param['text']}) 
-            print(f"MessageReplies /sendMessage [{r.status_code}]") 
-            # делаем закреп
-            pinChatMessage(url, r.json()['result']['chat']['id'], r.json()['result']['message_id'])
-        if post_param['poll'] != '': 
-            # logger.info("post_param['poll'] != ''")
-            r = requests.post(url + '/sendPoll', data={"chat_id": Owner_Channel_ID, 
-                                                       "reply_to_message_id": Reply_ID, 
-                                                       "question": post_param['poll'][0], 
-                                                       "options": json.dumps(post_param['poll'][1]), 
-                                                       "is_anonymous": False})  
-            print(f"MessageReplies /sendPoll [{r.status_code}]")
+    if post_param != None: 
+        r = requests.post(url + '/getUpdates')
+        print(f"MessageReplies /getUpdates [{r.status_code}]") 
+        if r.status_code == 200:
+            Dict = r.json()
+            Len_Dict = len(Dict['result'])-1
+            Last_Result = Dict['result'][Len_Dict]
+            Owner_Channel_ID = Last_Result['message']['chat']['id']
+            Reply_ID = Last_Result['message']['message_id'] 
+            if post_param['text'] != '':
+                # logger.info("post_param['text'] != ''")
+                r = requests.post(url + '/sendMessage', data={"chat_id": Owner_Channel_ID, 
+                                                            "reply_to_message_id": Reply_ID, 
+                                                            "text": post_param['text']}) 
+                print(f"MessageReplies /sendMessage [{r.status_code}]") 
+                # делаем закреп
+                pinChatMessage(url, r.json()['result']['chat']['id'], r.json()['result']['message_id'])
+            if post_param['poll'] != '': 
+                # logger.info("post_param['poll'] != ''")
+                r = requests.post(url + '/sendPoll', data={"chat_id": Owner_Channel_ID, 
+                                                        "reply_to_message_id": Reply_ID, 
+                                                        "question": post_param['poll'][0], 
+                                                        "options": json.dumps(post_param['poll'][1]), 
+                                                        "is_anonymous": False})  
+                print(f"MessageReplies /sendPoll [{r.status_code}]")
 
 if __name__ == '__main__':
     while True:
         try:
             print("Begin ...")
             AnswerTG = SendMSG2Telegram(tg_url, GetMsgFromVK(token_vk), channel_id)
-            time.sleep(5)
-            MessageReplies(tg_url, AnswerTG)
+            # time.sleep(5)
+            # MessageReplies(tg_url, AnswerTG)
             print("End.")
         except Exception:
             # logger.warning("Переподключение")
-            print("Something is wrong...")
+            print(f"Something is wrong...")
             time.sleep(10)
             pass
