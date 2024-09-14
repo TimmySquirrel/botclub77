@@ -55,30 +55,48 @@ def GetMsgFromVK(token_vk):
 
         
 # Отправляем в телегу сообщение
-def SendMSG2Telegram(url, post_param, chat_id):
-    print("SendMSG2Telegram start ...")
-    if len(post_param['photo']) == 0:
-        r = requests.post(url + '/sendMessage', data={"chat_id": chat_id, 
-                                                      "text": post_param['text']})
-                                                    #   "text": post_param['text'], 
-                                                    #   "disable_web_page_preview": True})  
-        print(f"SendMSG2Telegram /sendMessage [{r.status_code}]")       
-    else:
-        text = post_param['text']
-        if len(post_param['text']) > 1024:
-            a = GetIndexLastNewLine(post_param['text'])
-            text = post_param['text'][:a] + f"\n[Все не влезло, продолжение по ссылке {post_param['link']} ©MSGBot]"
-            post_param['text'] = ''
-            # text = post_param['text'][:a] + '\n[Все не влезло, перенес в комментарии...©MSGBot] '
-            # logger.info("Все не влезло, перенес в комментарии...")
-            # post_param['text'] = '[На чем мы тут остановились...©MSGBot]\n' + post_param['text'][a:]
-        else:
-            post_param['text'] = ''
-        r = requests.post(url + "/sendPhoto", data={"chat_id": chat_id, 
-                                                    "photo": post_param['photo'], 
-                                                    "caption": text}) 
-        print(f"SendMSG2Telegram /sendPhoto [{r.status_code}]") 
-    return post_param if r.status_code == 200 else None  
+# Обновленная версия функции с добавленной обработкой ошибок и проверками статусов
+def SendMSG2Telegram(url, post_param, channel_id):
+    try:
+        # Отправляем фото
+        if len(post_param['photo']) > 0:
+            for photo in post_param['photo']:
+                print(f"Trying to send photo: {photo}")  # Выводим URL фото перед отправкой
+                r = requests.post(url + '/sendPhoto', data={'chat_id': channel_id, 'photo': photo})
+                print(f"SendPhoto to TG [{r.status_code}], Response: {r.text}")
+                if r.status_code == 200:
+                    print(f"SendPhoto to TG [{r.status_code}]")
+                else:
+                    print(f"Failed to send photo to TG. Status code: {r.status_code}, Response: {r.text}")
+                time.sleep(1)  # Тайм-аут между отправками фото
+
+        # Отправляем текст
+        if post_param['text'] != '':
+            r = requests.post(url + '/sendMessage',
+                              data={'chat_id': channel_id, 'text': post_param['text'] + post_param['link']})
+            if r.status_code == 200:
+                print(f"SendMessage to TG [{r.status_code}]")
+            else:
+                print(f"Failed to send message to TG. Status code: {r.status_code}, Response: {r.text}")
+            return r.json()
+
+        # Отправляем опрос, если есть
+        if post_param['poll'] != '':
+            r = requests.post(url + '/sendPoll', data={
+                'chat_id': channel_id,
+                'question': post_param['poll'][0],
+                'options': json.dumps(post_param['poll'][1]),
+                'is_anonymous': False
+            })
+            if r.status_code == 200:
+                print(f"SendPoll to TG [{r.status_code}]")
+            else:
+                print(f"Failed to send poll to TG. Status code: {r.status_code}, Response: {r.text}")
+            return r.json()
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
 
 # Закрепляем пост
 def pinChatMessage(url, chat_id, message_id):
