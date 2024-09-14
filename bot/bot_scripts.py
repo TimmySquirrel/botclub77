@@ -42,7 +42,7 @@ def GetMsgFromVK(token_vk):
     print("GetMsgFromVK start ...")
     vk = vk_api.VkApi(token=token_vk)
     longpoll = VkBotLongPoll(vk, group_id=group_id)
-    print(f"GetMsgFromVK connect to VK service VK.[{longpoll.session.verify.__str__()}]")
+    print(f"GetMsgFromVK connect to VK service [{longpoll.session.verify.__str__()}]")
     # logger.info("Подключение к VK. Session.verify - " + longpoll.session.verify.__str__())
     # слушаем отклики сервака
     for event in longpoll.listen():
