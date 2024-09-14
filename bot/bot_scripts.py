@@ -62,7 +62,7 @@ def SendMSG2Telegram(url, post_param, chat_id):
                                                       "text": post_param['text']})
                                                     #   "text": post_param['text'],
                                                     #   "disable_web_page_preview": True})
-        print(f"SendMSG2Telegram /sendMessage [{r.status_code}]")
+        PrintLog(r, 'SendMSG2Telegram', '/sendMessage')
     else:
         text = post_param['text']
         if len(post_param['text']) > 1024:
@@ -77,21 +77,21 @@ def SendMSG2Telegram(url, post_param, chat_id):
         r = requests.post(url + "/sendPhoto", data={"chat_id": chat_id,
                                                     "photo": post_param['photo'],
                                                     "caption": text})
-        print(f"SendMSG2Telegram /sendPhoto [{r.status_code}]")
+        PrintLog(r, 'SendMSG2Telegram', '/sendPhoto')
     return post_param if r.status_code == 200 else None
 
 
 # Закрепляем пост
 def pinChatMessage(url, chat_id, message_id):
-    r = requests.post(url + '/pinChatMessage', data = {"chat_id": chat_id, "message_id": message_id})  
-    print(f"pinChatMessage /pinChatMessage [{r.status_code}]") 
+    r = requests.post(url + '/pinChatMessage', data = {"chat_id": chat_id, "message_id": message_id})
+    PrintLog(r, 'pinChatMessage', '/pinChatMessage')  
 
 # комметрируем пост, параметры поста получаем через getUpdates
 def MessageReplies(url, post_param):
     print("MessageReplies start ...") 
     if post_param != None: 
         r = requests.post(url + '/getUpdates')
-        print(f"MessageReplies /getUpdates [{r.status_code}]") 
+        PrintLog(r,"MessageReplies", "/getUpdates") 
         if r.status_code == 200:
             Dict = r.json()
             Len_Dict = len(Dict['result'])-1
@@ -103,7 +103,7 @@ def MessageReplies(url, post_param):
                 r = requests.post(url + '/sendMessage', data={"chat_id": Owner_Channel_ID, 
                                                             "reply_to_message_id": Reply_ID, 
                                                             "text": post_param['text']}) 
-                print(f"MessageReplies /sendMessage [{r.status_code}]") 
+                PrintLog(r,"MessageReplies", "/sendMessage") 
                 # делаем закреп
                 pinChatMessage(url, r.json()['result']['chat']['id'], r.json()['result']['message_id'])
             if post_param['poll'] != '': 
@@ -113,13 +113,17 @@ def MessageReplies(url, post_param):
                                                         "question": post_param['poll'][0], 
                                                         "options": json.dumps(post_param['poll'][1]), 
                                                         "is_anonymous": False})  
-                print(f"MessageReplies /sendPoll [{r.status_code}]")
+                PrintLog(r,"MessageReplies", "/sendPoll") 
+
+def PrintLog(requests, FunName: str, MetodName: str):
+   print(f"{FunName} {MetodName} [{requests.status_code}]" + ('' if requests.status_code == 200 else f"[{requests.text}]")) 
 
 if __name__ == '__main__':
     while True:
         try:
             print("Begin ...")
-            AnswerTG = SendMSG2Telegram(tg_url, GetMsgFromVK(token_vk), channel_id)
+            text = GetMsgFromVK(token_vk)
+            AnswerTG = SendMSG2Telegram(tg_url, text, channel_id)
             # time.sleep(5)
             # MessageReplies(tg_url, AnswerTG)
             print("End.")
