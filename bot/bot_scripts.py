@@ -14,10 +14,11 @@ def GetValuesJSON(aJSON:dict):
     Result['text'] = ''
     Result['photo'] = [] 
     Result['poll'] = {}
+    Result['link'] = ''
     # Получаем текст сообщения + ссылку на пост
     if aJSON['text'] > '':
         Result['text'] = aJSON['text']+'\n\n'
-    Result['text'] += f"https://vk.com/wall{aJSON['owner_id']}_{aJSON['id']}"
+    Result['link'] = f"https://vk.com/wall{aJSON['owner_id']}_{aJSON['id']}"
     # Вытаскиваем содержимое прикрепленных элементов
     attachments = [attach for attach in aJSON['attachments']]
     if len(attachments) > 0 :
@@ -66,9 +67,11 @@ def SendMSG2Telegram(url, post_param, chat_id):
         text = post_param['text']
         if len(post_param['text']) > 1024:
             a = GetIndexLastNewLine(post_param['text'])
-            text = post_param['text'][:a] + '\n[Все не влезло, перенес в комментарии...©MSGBot] '
+            text = post_param['text'][:a] + f"\n[Все не влезло, продолжение по ссылке {post_param['link']} ©MSGBot]"
+            post_param['text'] = ''
+            # text = post_param['text'][:a] + '\n[Все не влезло, перенес в комментарии...©MSGBot] '
             # logger.info("Все не влезло, перенес в комментарии...")
-            post_param['text'] = '[На чем мы тут остановились...©MSGBot]\n' + post_param['text'][a:]
+            # post_param['text'] = '[На чем мы тут остановились...©MSGBot]\n' + post_param['text'][a:]
         else:
             post_param['text'] = ''
         r = requests.post(url + "/sendPhoto", data={"chat_id": chat_id, 
