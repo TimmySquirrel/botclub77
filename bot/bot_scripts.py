@@ -29,6 +29,8 @@ def GetValuesJSON(aJSON:dict):
                     Result['photo'].append(attach['poll']['photo']['images'][0]['url'])
             elif attach['type'] == 'photo':               
                 Result['photo'].append(attach['photo']['orig_photo']['url'])
+            elif attach['type'] == 'doc':               
+                Result['photo'].append(attach['doc']["preview"]['photo']['sizes'][-1]['src'])
     return Result
 
 # Ищем перенос
@@ -74,6 +76,7 @@ def SendMSG2Telegram(url: str, post_param: dict, chat_id: int):
             post_param['text'] = '[На чем мы тут остановились...]\n' + post_param['text'][a:] + post_param['link']
         else:
             post_param['text'] = ''
+        print(post_param['photo'])
         r = requests.post(url + "/sendPhoto", data={"chat_id": chat_id,
                                                     "photo": post_param['photo'],
                                                     "caption": text})
@@ -112,9 +115,9 @@ def MessageReplies(url:str, post_param:dict):
                                                             "reply_to_message_id": ChatParam['message_id'], 
                                                             "text": post_param['text']}) 
                 PrintLog(r,"MessageReplies", "/sendMessage") 
-                if r.status_code == 200:
-                    # делаем закреп
-                    pinChatMessage(url, r.json()['result']['chat']['id'], r.json()['result']['message_id'])
+                # if r.status_code == 200:
+                #     # делаем закреп
+                #     pinChatMessage(url, r.json()['result']['chat']['id'], r.json()['result']['message_id'])
             if post_param['poll'] != '': 
                 # logger.info("post_param['poll'] != ''")
                 r = requests.post(url + '/sendPoll', data={"chat_id": ChatParam['chat_id'], 

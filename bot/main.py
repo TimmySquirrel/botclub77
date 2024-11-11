@@ -14,13 +14,24 @@ from bot_config import token_vk, channel_id
 #             pass
 
 
+# def GetMsgFromVK(token_vk):
+#     vk = vk_api.VkApi(token=token_vk)
+#     longpoll = VkBotLongPoll(vk, group_id=group_id)
+#     for event in longpoll.listen():
+#         if event.type == VkBotEventType.WALL_POST_NEW: 
+#             with open('file/data_repost_new1.json', 'w') as file:
+#                 json.dump(event.object, file, indent=4)
+#             # return GetValuesJSON(event.object)
+
+# GetMsgFromVK(token_vk)
 
 
 
-r = requests.post(tg_url + '/getUpdates') 
-                                                # 'offset': -10, '
-json_file = r.json()
-print(GetChatAndMSGID(json_file, -1002162249193, 146))
+
+# r = requests.post(tg_url + '/getUpdates') 
+#                                                 # 'offset': -10, '
+# json_file = r.json()
+# print(GetChatAndMSGID(json_file, -1002162249193, 146))
 # print(json.dumps(json_file['result'][0],  indent=4))
 # for i,result in enumerate(json_file['result']):
 #     if result.get('message') and result['message'].get('is_automatic_forward') and result['message']['forward_from_message_id'] == 146:
@@ -43,9 +54,11 @@ print(GetChatAndMSGID(json_file, -1002162249193, 146))
 
 # 
 #     # json.dump(r.text, file, indent=4)
-# with open('file/data_update.json') as file:
+# with open('file/data_repost_new1.json') as file:
 #     json_file = json.load(file)
-# # #     # print(json_file["result"][0])
+
+#     print(json_file['copy_history'][0]['attachments'][0]['doc']["preview"]['photo']['sizes'][-1]['src'])
+# #     # print(json_file["result"][0])
 #     for result in json_file["result"]:
         
 #         if result.get('message')  and  result['message']['chat']['id'] == -1002430633954: 
