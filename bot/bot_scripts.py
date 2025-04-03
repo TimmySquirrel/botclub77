@@ -1,11 +1,14 @@
-import vk_api, requests, time, json
+import vk_api, requests, time, json, logging, os
 from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
 from bot_config import token_telegram, token_vk, group_id, channel_id 
+from config.config import *
 
 
 
 tg_url = "https://api.telegram.org/bot" + token_telegram
 
+logging.basicConfig(format = log_pattern, level = log_level, filename = log_path + '/' + log_file_name)
+logger = logging.getLogger(__name__)
 
 # формируем свой JSON параметров по полученому из VK
 def GetValuesJSON(aJSON:dict):
@@ -35,30 +38,29 @@ def GetValuesJSON(aJSON:dict):
 
 # Ищем перенос
 def GetIndexLastNewLine(text: str):
+    logger.debug('')
     a = text.rfind('\n', 0, 800)
     return a if a != -1 else 800
 
 # Получаем пост из ВК
 def GetMsgFromVK(token_vk: str):
     # открываем сессию  с ВК
-    print("GetMsgFromVK start ...")
+    logger.info("GetMsgFromVK start ...")
     vk = vk_api.VkApi(token=token_vk)
     longpoll = VkBotLongPoll(vk, group_id=group_id)
-    print(f"GetMsgFromVK connect to VK service [{longpoll.session.verify.__str__()}]")
-    # logger.info("Подключение к VK. Session.verify - " + longpoll.session.verify.__str__())
+    logger.info(f"GetMsgFromVK connect to VK service [{longpoll.session.verify.__str__()}]")
     # слушаем отклики сервака
     for event in longpoll.listen():
         if event.type == VkBotEventType.WALL_POST_NEW:
             json_file = event.object
             if json_file['from_id'] == group_id * -1:
-                # logger.info("Новая запись на стене от Сообщества")
-                print("GetMsgFromVK get a new post from API ...")
+                logger.info("GetMsgFromVK get a new post from API ...")
                 return GetValuesJSON(json_file['copy_history'][0]) if json_file.get('copy_history') else GetValuesJSON(json_file)
 
         
 # Отправляем в телегу сообщение
 def SendMSG2Telegram(url: str, post_param: dict, chat_id: int):
-    print("SendMSG2Telegram start ...")
+    logger.info("SendMSG2Telegram start ...")
     if len(post_param['photo']) == 0:
         r = requests.post(url + '/sendMessage', data={"chat_id": chat_id,
                                                       "text": post_param['text'] + post_param['link']})
@@ -67,16 +69,18 @@ def SendMSG2Telegram(url: str, post_param: dict, chat_id: int):
         PrintLog(r, 'SendMSG2Telegram', '/sendMessage')
     else:
         text = post_param['text'] + post_param['link']
-        if len(post_param['text']) > 1024:
+        Len = len(text)
+        logger.debug(f'Text len {Len}')
+        if Len > 1024:
             a = GetIndexLastNewLine(post_param['text'])
-            # text = post_param['text'][:a] + f"\n[Все не влезло, продолжение по ссылке {post_param['link']} ©MSGBot]"
-            # post_param['text'] = ''
-            # logger.info("Все не влезло, перенес в комментарии...")
-            text = post_param['text'][:a] + '\n[Все не влезло, перенес в комментарии...] '
-            post_param['text'] = '[На чем мы тут остановились...]\n' + post_param['text'][a:] + post_param['link']
+            logger.debug(f'Index{a}')
+            text = post_param['text'][:a] 
+            post_param['text'] = '[Продолжение...]\n' + post_param['text'][a:]
+            Len = len(post_param['text'])
+            logger.debug(f'Text len[{Len}]')
         else:
             post_param['text'] = ''
-        print(post_param['photo'])
+            logger.debug(f'Text len [0]')
         r = requests.post(url + "/sendPhoto", data={"chat_id": chat_id,
                                                     "photo": post_param['photo'],
                                                     "caption": text})
@@ -105,21 +109,19 @@ def GetChatAndMSGID(from_chat_id:int, from_msg_id:int):
 
 # комметрируем пост, параметры поста получаем через getUpdates
 def MessageReplies(url:str, post_param:dict):
-    print("MessageReplies start ...") 
+    logger.info("MessageReplies start ...") 
     if post_param != None: 
         ChatParam = GetChatAndMSGID(post_param['owner_chat_id'], post_param['owner_message_id'])
+        logger.debug(ChatParam)
         if ChatParam:
             if post_param['text'] != '':
-                # logger.info("post_param['text'] != ''")
+                logger.debug('Text empty')
                 r = requests.post(url + '/sendMessage', data={"chat_id": ChatParam['chat_id'], 
                                                             "reply_to_message_id": ChatParam['message_id'], 
                                                             "text": post_param['text']}) 
                 PrintLog(r,"MessageReplies", "/sendMessage") 
-                # if r.status_code == 200:
-                #     # делаем закреп
-                #     pinChatMessage(url, r.json()['result']['chat']['id'], r.json()['result']['message_id'])
             if post_param['poll'] != '': 
-                # logger.info("post_param['poll'] != ''")
+                logger.debug('Poll empty')
                 r = requests.post(url + '/sendPoll', data={"chat_id": ChatParam['chat_id'], 
                                                         "reply_to_message_id": ChatParam['message_id'], 
                                                         "question": post_param['poll'][0], 
@@ -127,20 +129,29 @@ def MessageReplies(url:str, post_param:dict):
                                                         "is_anonymous": False})  
                 PrintLog(r,"MessageReplies", "/sendPoll") 
 
-def PrintLog(requests, FunName: str, MetodName: str):
-   print(f"{FunName} {MetodName} [{requests.status_code}]" + ('' if requests.status_code == 200 else f"[{requests.text}]")) 
+def PrintLog(requests, FunName, MetodName: str):
+    msg = f"{FunName} {MetodName} [{requests.status_code}]"
+    if requests.status_code == 200:
+        logger.info(msg)
+    else:
+        logger.warning(msg + f"[{requests.text}]")
 
 if __name__ == '__main__':
     while True:
         try:
-            print("Begin ...")
+            if not os.path.isdir(log_path):
+                try:
+                    os.mkdir(log_path)
+                except: 
+                    logger.error(f'Dir[{log_path}]not ready.')
+                    break
+            logger.info("Begin ...")
             text = GetMsgFromVK(token_vk)
             AnswerTG = SendMSG2Telegram(tg_url, text, channel_id)
             time.sleep(5)
             MessageReplies(tg_url, AnswerTG)
-            print("End.")
+            logger.info("End.")
         except Exception:
-            # logger.warning("Переподключение")
-            print(f"Something is wrong...")
+            logger.warning(f"Something is wrong...")
             time.sleep(10)
             pass
