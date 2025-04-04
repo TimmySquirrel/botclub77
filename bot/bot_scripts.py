@@ -153,7 +153,7 @@ if __name__ == '__main__':
         except: 
             logger.error(f'Dir [{log_path}] not create. Plz try again')
             exit()
-    logging.basicConfig(format = log_pattern, level = log_level, filename = log_path + '/' + log_file_name)
+    logging.basicConfig(format = log_pattern, level = log_level, filename = log_path + delimetr + log_file_name)
     count_inter = 0
     bad_iter = 0
     while True:
