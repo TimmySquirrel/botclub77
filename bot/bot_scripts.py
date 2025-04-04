@@ -61,11 +61,11 @@ def SendMSG2Telegram(url: str, post_param: dict, chat_id: int):
     logger.info("SendMSG2Telegram start ...")
     if len(post_param['photo']) == 0:
         r = requests.post(url + '/sendMessage', data={"chat_id": chat_id,
-                                                      "text": post_param['text'] + post_param['link'],
-                                                      "disable_web_page_preview": True})
+                                                      "text": post_param['text'] + post_param['link']})
                                                     #   "text": post_param['text'],
                                                     #   "disable_web_page_preview": True})
         PrintLog(r, 'SendMSG2Telegram', '/sendMessage')
+        post_param['text'] = ''
     else:
         text = post_param['text'] + post_param['link']
         Len = len(text)
