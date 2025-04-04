@@ -3,7 +3,7 @@ from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
 from bot_config import token_telegram, token_vk, group_id, channel_id 
 from config.config import *
 
-
+# version 1.0.001
 
 tg_url = url_4_tgbot + token_telegram
 logger = logging.getLogger(__name__)
@@ -107,6 +107,9 @@ def GetChatAndMSGID(from_chat_id:int, from_msg_id:int):
                 and result['message']['forward_from_chat']['id'] == from_chat_id
                 and result['message']['forward_from_message_id'] == from_msg_id):
                 return {'update_id': result['update_id'], 'message_id': result['message']['message_id'], 'chat_id': result['message']['chat']['id']}
+    elif data_json.status_code == 409:
+        data_json = requests.post(tg_url + '/deleteWebhook')
+        PrintLog(data_json, 'GetChatAndMSGID', '/deleteWebhook') 
 
 # комметрируем пост, параметры поста получаем через getUpdates
 def MessageReplies(url:str, post_param:dict):
