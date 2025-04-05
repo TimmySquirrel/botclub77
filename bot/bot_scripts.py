@@ -59,22 +59,22 @@ def GetMsgFromVK(token_vk: str):
 # Отправляем в телегу сообщение
 def SendMSG2Telegram(url: str, post_param: dict, chat_id: int):
     logger.info("SendMSG2Telegram start ...")
+    text = post_param['text'] + post_param['link']
     if len(post_param['photo']) == 0:
         r = requests.post(url + '/sendMessage', data={"chat_id": chat_id,
-                                                      "text": post_param['text'] + post_param['link']})
+                                                      "text": text})
                                                     #   "text": post_param['text'],
                                                     #   "disable_web_page_preview": True})
         PrintLog(r, 'SendMSG2Telegram', '/sendMessage')
         post_param['text'] = ''
     else:
-        text = post_param['text'] + post_param['link']
         Len = len(text)
         logger.debug(f'Upload msg len {Len}')
         if Len > max_len_msg:
-            a = GetIndexLastNewLine(post_param['text'])
+            a = GetIndexLastNewLine(text)
             logger.debug(f'Main msg len {a}')
-            text = post_param['text'][:a] 
-            post_param['text'] = '[Продолжение...]\n' + post_param['text'][a:]
+            post_param['text'] = '[Продолжение...]\n' + text[a:]
+            text = text[:a] 
             Len = len(post_param['text'])
             logger.debug(f'Rep msg len[{Len}]')
         else:
