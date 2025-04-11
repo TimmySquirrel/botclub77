@@ -1,4 +1,4 @@
-import time, codecs 
+import time, codecs, re
 from bot_scripts import *
 from bot_config import token_vk, channel_id
 
@@ -13,18 +13,67 @@ from bot_config import token_vk, channel_id
 #             time.sleep(10)
 #             pass
 
+file_name_string = 'file/{}.json'
 
-# def GetMsgFromVK(token_vk):
-#     vk = vk_api.VkApi(token=token_vk)
-#     longpoll = VkBotLongPoll(vk, group_id=group_id)
-#     for event in longpoll.listen():
-#         if event.type == VkBotEventType.WALL_POST_NEW: 
-#             with open('file/data_repost_new1.json', 'w') as file:
-#                 json.dump(event.object, file, indent=4)
-#             # return GetValuesJSON(event.object)
+#   Сохранить текст в файл с  ВК 
+def SaveMsgFromVK(token_vk, file_name):
+    vk = vk_api.VkApi(token=token_vk)
+    longpoll = VkBotLongPoll(vk, group_id=group_id)
+    for event in longpoll.listen():
+        if event.type == VkBotEventType.WALL_POST_NEW: 
+            # with open('file/' +file_name + '.json', 'w') as file:
+            with open(file_name_string.format(file_name), 'w') as file:
+                json.dump(event.object, file, indent=4)
+            # return GetValuesJSON(event.object)
 
-# GetMsgFromVK(token_vk)
+# SaveMsgFromVK(token_vk,'msg_with_link')
 
+
+#  чтение JSON
+def ReadJSON(file_name) -> str:
+    with open(file_name_string.format(file_name)) as file:
+        json_file = json.load(file)
+        message = json_file['copy_history'][0]['text']
+        return message
+
+def ParsString(aPattern, aString: str):
+    ar_text = re.findall(aPattern, aString) 
+    return ar_text if len(ar_text) != 0 else None 
+
+def ReplceLinkByTG(aString:str): 
+    _PatterMain = r"\[#alias\|.*\]"
+    _PatterBefor = r"\[#alias\|(.*)\|(.*)\]"
+    _PatterMarkTG = '[{}]({})'
+    _PatterHTMLTG = '<a href="{}">{}</a>'
+    while True:
+        _Text = re.search(_PatterMain, aString)
+        if _Text:
+            _LinkPart = re.findall(_PatterBefor, _Text[0])
+            if _LinkPart:
+                _TextAfter = _PatterMarkTG.format(_LinkPart[0][0], _LinkPart[0][1])
+                aString = aString.replace(_Text[0], _TextAfter)
+        else: break
+    return aString       
+    
+
+
+
+# _LinkString = '[{}]({})'
+_JSON_Text = ReadJSON('msg_with_link')
+_Text4TG = {'text':'', 'photo':[], 'poll': {}, 'link':''}
+print(_JSON_Text)
+_JSON_Text = _JSON_Text.replace('_', '\_')
+_Text4TG['text'] = ReplceLinkByTG(_JSON_Text)
+SendMSG2Telegram(tg_url, _Text4TG, channel_id)
+
+# _Pattern1 = r"\[(.*)\]"
+# _Pattern2 = r"\[#alias\|(.*)\|(.*)\]"
+# _Pattern3 = "\[#alias\|{}\|{}\]"
+# text = ParsString(_Pattern2, _JSON_Text)
+
+# if text:
+#     _List = [_LinkString.format(string[0],string[1]) for string in text] 
+#     print(_List)
 
 
 

@@ -11,11 +11,7 @@ logger = logging.getLogger(__name__)
 # формируем свой JSON параметров по полученому из VK
 def GetValuesJSON(aJSON:dict):
     # инициализируем структуру данных на выходе
-    Result = {}
-    Result['text'] = ''
-    Result['photo'] = [] 
-    Result['poll'] = {}
-    Result['link'] = ''
+    Result = {'text': '', 'photo': [], 'poll': {}, 'link': ''}
     # Получаем текст сообщения + ссылку на пост
     if aJSON['text'] > '':
         Result['text'] = aJSON['text']+'\n\n'
@@ -62,9 +58,10 @@ def SendMSG2Telegram(url: str, post_param: dict, chat_id: int):
     text = post_param['text'] + post_param['link']
     if len(post_param['photo']) == 0:
         r = requests.post(url + '/sendMessage', data={"chat_id": chat_id,
-                                                      "text": text})
+                                                      "text": text,
+                                                      "parse_mode": "Markdown"})
                                                     #   "text": post_param['text'],
-                                                    #   "disable_web_page_preview": True})
+                                                    #   disable_web_page_preview": True,})
         PrintLog(r, 'SendMSG2Telegram', '/sendMessage')
         post_param['text'] = ''
     else:
