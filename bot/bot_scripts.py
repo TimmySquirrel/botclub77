@@ -1,9 +1,9 @@
-import vk_api, requests, time, json, logging, os
+import vk_api, requests, time, json, logging, os, bot_parser as pe
 from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
 from bot_config import token_telegram, token_vk, group_id, channel_id 
 from config.config import *
 
-# version 1.0.001
+# version 1.0.002
 
 tg_url = url_4_tgbot + token_telegram
 logger = logging.getLogger(__name__)
@@ -57,11 +57,10 @@ def SendMSG2Telegram(url: str, post_param: dict, chat_id: int):
     logger.info("SendMSG2Telegram start ...")
     text = post_param['text'] + post_param['link']
     if len(post_param['photo']) == 0:
+        text = pe.ReplaceLink4MSG(text, parse_mode)
         r = requests.post(url + '/sendMessage', data={"chat_id": chat_id,
                                                       "text": text,
-                                                      "parse_mode": "Markdown"})
-                                                    #   "text": post_param['text'],
-                                                    #   disable_web_page_preview": True,})
+                                                      "parse_mode": parse_mode})
         PrintLog(r, 'SendMSG2Telegram', '/sendMessage')
         post_param['text'] = ''
     else:
@@ -77,6 +76,7 @@ def SendMSG2Telegram(url: str, post_param: dict, chat_id: int):
         else:
             post_param['text'] = ''
             logger.debug(f'Rep msg empty')
+        text = pe.ReplaceLink4Photo(text)
         r = requests.post(url + "/sendPhoto", data={"chat_id": chat_id,
                                                     "photo": post_param['photo'],
                                                     "caption": text})
@@ -103,7 +103,7 @@ def GetChatAndMSGID(from_chat_id:int, from_msg_id:int):
                 and result['message'].get('is_automatic_forward') 
                 and result['message']['forward_from_chat']['id'] == from_chat_id
                 and result['message']['forward_from_message_id'] == from_msg_id):
-                return {'update_id': result['update_id'], 'message_id': result['message']['message_id'], 'chat_id': result['message']['chat']['id']}
+                return {'update_id': result['update_id'], 'message_id': result['message']['message_id'], 'chat_id': result['message']['chat']['id']}              
     elif data_json.status_code == 409:
         data_json = requests.post(tg_url + '/deleteWebhook')
         PrintLog(data_json, 'GetChatAndMSGID', '/deleteWebhook') 
@@ -116,10 +116,13 @@ def MessageReplies(url:str, post_param:dict):
         logger.debug(ChatParam)
         if ChatParam:
             logger.debug(post_param['text'])
-            if post_param['text'] != '':                
+            if post_param['text'] != '':  
+                text = pe.ReplaceLink4MSG(post_param['text'] , parse_mode)     
                 r = requests.post(url + '/sendMessage', data={"chat_id": ChatParam['chat_id'], 
                                                             "reply_to_message_id": ChatParam['message_id'], 
-                                                            "text": post_param['text']}) 
+                                                            "parse_mode": parse_mode,
+                                                            "text": text 
+                                                            })
                 PrintLog(r,"MessageReplies", "/sendMessage") 
             else:
                 logger.info('Rep msg empty. Dont send')
@@ -131,8 +134,8 @@ def MessageReplies(url:str, post_param:dict):
                                                         "options": json.dumps(post_param['poll'][1]), 
                                                         "is_anonymous": False})  
                 PrintLog(r,"MessageReplies", "/sendPoll") 
-            else:
-                logger.info('Poll empty. Dont send')
+            else: logger.info('Poll empty. Dont send')
+        else: logger.warning('GetChatAndMSGID dont find main post [CID:{}][MID:{}]'.format(post_param['owner_chat_id'], post_param['owner_message_id']))
     logger.info("MessageReplies finish.") 
 
 #отправка сообщения в лог
@@ -163,7 +166,7 @@ if __name__ == '__main__':
                 if AnswerTG:
                     time.sleep(limit_timeout)
                     MessageReplies(tg_url, AnswerTG)
-            logger.info(f"Finish iteration[[T:{count_inter}][B:{bad_iter}].")
+            logger.info(f"Finish iteration[T:{count_inter}][B:{bad_iter}].")
         except Exception as error:
             logger.warning(f"Something is wrong...[{type(error)}:{error}]")
             bad_iter += 1

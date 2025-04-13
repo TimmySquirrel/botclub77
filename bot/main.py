@@ -1,6 +1,7 @@
-import time, codecs, re
+import time, codecs, re, bot_parser as pe
 from bot_scripts import *
 from bot_config import token_vk, channel_id
+
 
 # if __name__ == '__main__':
 #     while True:
@@ -26,7 +27,7 @@ def SaveMsgFromVK(token_vk, file_name):
                 json.dump(event.object, file, indent=4)
             # return GetValuesJSON(event.object)
 
-# SaveMsgFromVK(token_vk,'msg_with_link')
+# SaveMsgFromVK(token_vk,'msg_with_link4')
 
 
 #  чтение JSON
@@ -40,31 +41,18 @@ def ParsString(aPattern, aString: str):
     ar_text = re.findall(aPattern, aString) 
     return ar_text if len(ar_text) != 0 else None 
 
-def ReplceLinkByTG(aString:str): 
-    _PatterMain = r"\[#alias\|.*\]"
-    _PatterBefor = r"\[#alias\|(.*)\|(.*)\]"
-    _PatterMarkTG = '[{}]({})'
-    _PatterHTMLTG = '<a href="{}">{}</a>'
-    while True:
-        _Text = re.search(_PatterMain, aString)
-        if _Text:
-            _LinkPart = re.findall(_PatterBefor, _Text[0])
-            if _LinkPart:
-                _TextAfter = _PatterMarkTG.format(_LinkPart[0][0], _LinkPart[0][1])
-                aString = aString.replace(_Text[0], _TextAfter)
-        else: break
-    return aString       
-    
+text = '[#​alias|vk.cc/6G01a5 |vk.cc/6G01a5 ] < < рекомендую почитать!'
 
 
-
-# _LinkString = '[{}]({})'
-_JSON_Text = ReadJSON('msg_with_link')
+# # # _LinkString = '[{}]({})'
+_JSON_Text = ReadJSON('msg_with_link4')
 _Text4TG = {'text':'', 'photo':[], 'poll': {}, 'link':''}
-print(_JSON_Text)
-_JSON_Text = _JSON_Text.replace('_', '\_')
-_Text4TG['text'] = ReplceLinkByTG(_JSON_Text)
-SendMSG2Telegram(tg_url, _Text4TG, channel_id)
+
+_Text4TG['text'] = pe.ReplaceLink4Photo(_JSON_Text)
+print(_Text4TG['text'])
+# _Text4TG['text'] = text
+# print(ParsString(r'\[((?:id|club|event){1}\d+.*)\|(.*)\]', _JSON_Text))   #id,club,
+# SendMSG2Telegram(tg_url, _Text4TG, channel_id)
 
 # _Pattern1 = r"\[(.*)\]"
 # _Pattern2 = r"\[#alias\|(.*)\|(.*)\]"

@@ -9,10 +9,12 @@ log_file_name = 'log.log'
 #настройка видимости лога 10 с DEBUG 20 без DEBUG(param for production)
 log_level = 20 
 #ожидание перед отправкой продолжения
-limit_timeout = 3 
+limit_timeout = 5 
 #максимальная длинная сообщения в ТГ с фото
 max_len_msg = 1024 
 #кол-во топиков для поиска поста (должно быть отрицательным чтоб считать с конца)
 get_updates_offset = -50 
+
+parse_mode = 'HTML'
 
 url_4_tgbot = "https://api.telegram.org/bot"

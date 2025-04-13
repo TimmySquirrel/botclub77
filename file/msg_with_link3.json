@@ -1,0 +1,221 @@
+{
+    "inner_type": "wall_wallpost",
+    "copy_history": [
+        {
+            "inner_type": "wall_wallpost",
+            "compact_attachments_before_cut": 1,
+            "type": "post",
+            "attachments": [
+                {
+                    "type": "photo",
+                    "photo": {
+                        "album_id": -7,
+                        "date": 1744561465,
+                        "id": 457267516,
+                        "owner_id": -4748388,
+                        "access_key": "51c598544b6bf5d046",
+                        "post_id": 103616,
+                        "sizes": [
+                            {
+                                "height": 75,
+                                "type": "s",
+                                "width": 71,
+                                "url": "https://sun1-30.userapi.com/s/v1/ig2/XgpatVQUknEisSFo9yR65tjAC0jCa0x5m3oTA4l8eOqUU3S08LDlrhadAjpcsvpxOeOy3secuo8iZvERUwezcZlM.jpg?quality=95&as=32x34,48x51,72x76,108x114,160x169,240x253,360x380,480x506,540x569,640x675,720x759,959x1011&from=bu&cs=71x75"
+                            },
+                            {
+                                "height": 130,
+                                "type": "m",
+                                "width": 123,
+                                "url": "https://sun1-30.userapi.com/s/v1/ig2/XgpatVQUknEisSFo9yR65tjAC0jCa0x5m3oTA4l8eOqUU3S08LDlrhadAjpcsvpxOeOy3secuo8iZvERUwezcZlM.jpg?quality=95&as=32x34,48x51,72x76,108x114,160x169,240x253,360x380,480x506,540x569,640x675,720x759,959x1011&from=bu&cs=123x130"
+                            },
+                            {
+                                "height": 604,
+                                "type": "x",
+                                "width": 573,
+                                "url": "https://sun1-30.userapi.com/s/v1/ig2/XgpatVQUknEisSFo9yR65tjAC0jCa0x5m3oTA4l8eOqUU3S08LDlrhadAjpcsvpxOeOy3secuo8iZvERUwezcZlM.jpg?quality=95&as=32x34,48x51,72x76,108x114,160x169,240x253,360x380,480x506,540x569,640x675,720x759,959x1011&from=bu&cs=573x604"
+                            },
+                            {
+                                "height": 807,
+                                "type": "y",
+                                "width": 765,
+                                "url": "https://sun1-30.userapi.com/s/v1/ig2/XgpatVQUknEisSFo9yR65tjAC0jCa0x5m3oTA4l8eOqUU3S08LDlrhadAjpcsvpxOeOy3secuo8iZvERUwezcZlM.jpg?quality=95&as=32x34,48x51,72x76,108x114,160x169,240x253,360x380,480x506,540x569,640x675,720x759,959x1011&from=bu&cs=765x807"
+                            },
+                            {
+                                "height": 1011,
+                                "type": "z",
+                                "width": 959,
+                                "url": "https://sun1-30.userapi.com/s/v1/ig2/XgpatVQUknEisSFo9yR65tjAC0jCa0x5m3oTA4l8eOqUU3S08LDlrhadAjpcsvpxOeOy3secuo8iZvERUwezcZlM.jpg?quality=95&as=32x34,48x51,72x76,108x114,160x169,240x253,360x380,480x506,540x569,640x675,720x759,959x1011&from=bu&cs=959x1011"
+                            },
+                            {
+                                "height": 137,
+                                "type": "o",
+                                "width": 130,
+                                "url": "https://sun1-30.userapi.com/s/v1/ig2/XgpatVQUknEisSFo9yR65tjAC0jCa0x5m3oTA4l8eOqUU3S08LDlrhadAjpcsvpxOeOy3secuo8iZvERUwezcZlM.jpg?quality=95&as=32x34,48x51,72x76,108x114,160x169,240x253,360x380,480x506,540x569,640x675,720x759,959x1011&from=bu&cs=130x137"
+                            },
+                            {
+                                "height": 211,
+                                "type": "p",
+                                "width": 200,
+                                "url": "https://sun1-30.userapi.com/s/v1/ig2/XgpatVQUknEisSFo9yR65tjAC0jCa0x5m3oTA4l8eOqUU3S08LDlrhadAjpcsvpxOeOy3secuo8iZvERUwezcZlM.jpg?quality=95&as=32x34,48x51,72x76,108x114,160x169,240x253,360x380,480x506,540x569,640x675,720x759,959x1011&from=bu&cs=200x211"
+                            },
+                            {
+                                "height": 337,
+                                "type": "q",
+                                "width": 320,
+                                "url": "https://sun1-30.userapi.com/s/v1/ig2/XgpatVQUknEisSFo9yR65tjAC0jCa0x5m3oTA4l8eOqUU3S08LDlrhadAjpcsvpxOeOy3secuo8iZvERUwezcZlM.jpg?quality=95&as=32x34,48x51,72x76,108x114,160x169,240x253,360x380,480x506,540x569,640x675,720x759,959x1011&from=bu&cs=320x337"
+                            },
+                            {
+                                "height": 538,
+                                "type": "r",
+                                "width": 510,
+                                "url": "https://sun1-30.userapi.com/s/v1/ig2/XgpatVQUknEisSFo9yR65tjAC0jCa0x5m3oTA4l8eOqUU3S08LDlrhadAjpcsvpxOeOy3secuo8iZvERUwezcZlM.jpg?quality=95&as=32x34,48x51,72x76,108x114,160x169,240x253,360x380,480x506,540x569,640x675,720x759,959x1011&from=bu&cs=510x538"
+                            }
+                        ],
+                        "text": "",
+                        "user_id": 100,
+                        "web_view_token": "6936cef4fcf46f55b3",
+                        "has_tags": false,
+                        "orig_photo": {
+                            "height": 1011,
+                            "type": "base",
+                            "url": "https://sun1-30.userapi.com/s/v1/ig2/XgpatVQUknEisSFo9yR65tjAC0jCa0x5m3oTA4l8eOqUU3S08LDlrhadAjpcsvpxOeOy3secuo8iZvERUwezcZlM.jpg?quality=95&as=32x34,48x51,72x76,108x114,160x169,240x253,360x380,480x506,540x569,640x675,720x759,959x1011&from=bu",
+                            "width": 959
+                        }
+                    },
+                    "style": "full"
+                },
+                {
+                    "type": "poll",
+                    "poll": {
+                        "multiple": false,
+                        "end_date": 0,
+                        "closed": false,
+                        "is_board": false,
+                        "can_edit": true,
+                        "can_vote": true,
+                        "can_report": true,
+                        "can_share": true,
+                        "created": 1744561465,
+                        "id": 1024725690,
+                        "owner_id": -4748388,
+                        "question": "\u041a\u0442\u043e \u0442\u044b?",
+                        "votes": 6,
+                        "disable_unvote": false,
+                        "anonymous": false,
+                        "friends": [
+                            {
+                                "id": 2535508
+                            },
+                            {
+                                "id": 143209744
+                            },
+                            {
+                                "id": 21470292
+                            }
+                        ],
+                        "answer_ids": [],
+                        "embed_hash": "1024725690_79bfc377a45e79f38b",
+                        "answers": [
+                            {
+                                "id": 2713980549,
+                                "rate": 0.0,
+                                "text": "\u0411\u0435\u0437\u0434\u0435\u043b\u044c\u043d\u0438\u043a",
+                                "votes": 0
+                            },
+                            {
+                                "id": 2713980550,
+                                "rate": 33.33,
+                                "text": "\u0420\u0430\u0431\u043e\u0442\u044f\u0433\u0430",
+                                "votes": 2
+                            },
+                            {
+                                "id": 2713980551,
+                                "rate": 16.67,
+                                "text": "\u041a\u0440\u0435\u043f\u043e\u0441\u0442\u043d\u043e\u0439",
+                                "votes": 1
+                            },
+                            {
+                                "id": 2713980552,
+                                "rate": 50.0,
+                                "text": "\u0411\u0443\u043b\u043a\u0430",
+                                "votes": 3
+                            }
+                        ],
+                        "author_id": -4748388
+                    },
+                    "style": "compact",
+                    "compact": {
+                        "icons": [
+                            {
+                                "name": "poll_outline"
+                            }
+                        ],
+                        "title": {
+                            "text": {
+                                "text": "\u041a\u0442\u043e \u0442\u044b?"
+                            }
+                        },
+                        "description": {
+                            "text": {
+                                "text": "\u041e\u043f\u0440\u043e\u0441"
+                            }
+                        }
+                    }
+                }
+            ],
+            "attachments_meta": {
+                "primary_mode": "single",
+                "carousel_ratio": 0.95,
+                "ratio": 0.95
+            },
+            "date": 1744562124,
+            "from_id": -4748388,
+            "header": {
+                "photo": {
+                    "source_id": -4748388
+                },
+                "title": {
+                    "source_id": -4748388
+                },
+                "descriptions": []
+            },
+            "id": 103617,
+            "owner_id": -4748388,
+            "post_source": {
+                "type": "api"
+            },
+            "post_type": "post",
+            "text": "\u041f\u043e\u043d\u0435\u0434\u0435\u043b\u044c\u043d\u0438\u043a 14.04.2025 \u0421\u0440\u0435\u0434\u043d\u044f\u044f \u041a\u0433\u0433 (\u0434\u043d\u0435\u0432\u043d\u0430\u044f) \n\u041e\u043f\u0438\u0441\u0430\u043d\u0438\u044f \u043d\u0435 \u043f\u0440\u0435\u0434\u0432\u0438\u0434\u0438\u0442\u0441\u044f,\u043e\u0434\u0435\u0432\u0430\u0439\u0442\u0435 \u0437\u0430\u0449\u0438\u0442\u0443,\u043c\u0430\u0440\u0448\u0440\u0443\u0442 \u043d\u0435 \u043e\u0431\u043a\u0430\u0442\u0430\u043d! \n\u041a\u0442\u043e \u043b\u044e\u0431\u0438\u0442 \u043f\u043e\u043a\u0430\u0442\u0430\u0442\u044c \u043f\u043e \u0441\u043e\u043b\u043d\u044b\u0448\u043a\u0443,\u043a\u043e\u043d\u0435\u0447\u043d\u043e \u0432\u0441\u0435,\u043d\u043e \u043d\u0435 \u043c\u043d\u043e\u0433\u0438\u0435 \u0441\u043c\u043e\u0433\u0443\u0442\ud83d\ude43\n \n\u0421\u0422\u0410\u0420\u0422: 16:00 \u043c.\u041b\u044e\u0431\u043b\u0438\u043d\u043e (\u0432\u044b\u0445\u043e\u0434 1) \n\u041f\u0415\u0420\u0415\u0425\u0412\u0410\u0422\u042b- \u043d\u0435 \u0441\u0435\u0433\u043e\u0434\u043d\u044f \n\u0414\u0418\u0421\u0422\u0410\u041d\u0426\u0418\u042f: \u043d\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043d\u0430 (\u043e\u0442\u043a\u043e\u043b\u043e\u0442\u044c\u0441\u044f \u043c\u043e\u0436\u043d\u043e \u0432 \u043b\u044e\u0431\u043e\u0439 \u043c\u043e\u043c\u0435\u043d\u0442) \n\u0421\u0421\u041e <14+ (\u043f\u043e \u043d\u0430\u0441\u0442\u0440\u043e\u0435\u043d\u0438\u044e,\u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e \u0431\u044b\u0441\u0442\u0440\u0435\u0435) \n\u0424\u0418\u041d\u0418\u0428- \u0443 \u043c\u0435\u0442\u0440\u043e\n\u041f\u0418\u0422-\u0421\u0422\u041e\u041f\u042b-\u0417\u0430\u043f\u043b\u0430\u043d\u0438\u0440\u043e\u0432\u0430\u043d 1(+1 \u043a\u043e\u0440\u043e\u0442\u043a\u0438\u0439 \u0435\u0441\u043b\u0438 \u043f\u043e\u043d\u0430\u0434\u043e\u0431\u0438\u0442\u0441\u044f) \n\u041d\u0415 \u0414\u041b\u042f \u041d\u041e\u0412\u0418\u0427\u041a\u041e\u0412!!! \n\u0425\u0412\u041e\u0421\u0422- \u043d\u0435 \u0438\u043c\u0435\u044e \n\u0412\u0415\u0414\u0423\u0429\u0418\u0419 [id735212238|\u0421\u0435\u0440\u0433\u0435\u0439 \u041f\u043e\u0442\u0430\u043f\u043e\u0432]\n+7-999-917-9495 \n \n\u0412\u043e\u0437\u043c\u043e\u0436\u043d\u0430\u044f \u043e\u0442\u043c\u0435\u043d\u0430 \u043f\u043e\u043a\u0430\u0442\u0443\u0448\u043a\u0438 \u0437\u0430 \u0434\u0432\u0430 \u0447\u0430\u0441\u0430 \u0434\u043e \u0441\u0442\u0430\u0440\u0442\u0430,\u0441\u043b\u0435\u0434\u0438\u0442\u0435 \u0437\u0430 \u043e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u044f\u043c\u0438 \u0432 \u043a\u043e\u043c\u043c\u0435\u043d\u0442\u0430\u0440\u0438\u044f\u0445!!! \n \n\u041d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u043e \u0443\u043c\u0435\u0442\u044c \u0442\u043e\u0440\u043c\u043e\u0437\u0438\u0442\u044c,\u0443\u0432\u0435\u0440\u0435\u043d\u043d\u043e \u0441\u044a\u0435\u0437\u0436\u0430\u0442\u044c \u0441 \u0433\u043e\u0440\u043e\u043a, \u043f\u043e\u0432\u043e\u0440\u0430\u0447\u0438\u0432\u0430\u0442\u044c, \u0440\u0435\u0430\u0433\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u043d\u0430 \u043d\u0435\u043e\u0436\u0438\u0434\u0430\u043d\u043d\u043e\u0441\u0442\u0438,\u043f\u0440\u0435\u043e\u0434\u043e\u043b\u0435\u0432\u0430\u0442\u044c \u0440\u0430\u0437\u043b\u0438\u0447\u043d\u044b\u0435 \u043f\u0440\u0435\u043f\u044f\u0442\u0441\u0442\u0432\u0438\u044f \u0432 \u0433\u043e\u0440\u043e\u0434\u0435(\u0431\u043e\u0440\u0434\u044e\u0440\u044b,\u0442\u0430\u043a\u0442\u0438\u043b\u044c\u043d\u0430\u044f \u043f\u043b\u0438\u0442\u043a\u0430,\u0440\u0435\u043c\u043e\u043d\u0442\u044b \u0438 \u0442\u0434.) \n\u0412\u043e \u0432\u0440\u0435\u043c\u044f \u043a\u0430\u0442\u043a\u0438 \u043f\u0440\u043e\u0441\u044c\u0431\u0430 \u043f\u043e\u043a\u0430\u0437\u044b\u0432\u0430\u0442\u044c \u0437\u043d\u0430\u043a\u0438! \n\u0417\u0430\u0449\u0438\u0442\u0430 \u0438 \u0444\u043e\u043d\u0430\u0440\u0438\u043a\u0438 \u043f\u0440\u0438\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u0435\u0442\u0441\u044f! \n\u041e\u0446\u0435\u043d\u0438\u0432\u0430\u0439\u0442\u0435 \u0441\u0432\u043e\u0438 \u0441\u0438\u043b\u044b \u0441\u0430\u043c\u043e\u0441\u0442\u043e\u044f\u0442\u0435\u043b\u044c\u043d\u043e! \n\u0425\u043e\u0440\u043e\u0448\u0435\u0435 \u043d\u0430\u0441\u0442\u0440\u043e\u0435\u043d\u0438\u0435 \u0438 \u0431\u043e\u0434\u0440\u043e\u0441\u0442\u044c \u0434\u0443\u0445\u0430 \u043f\u0440\u0438\u0431\u0430\u0432\u0438\u0442 \u0432\u0430\u043c \u0441\u0438\u043b, \u0447\u0442\u043e\u0431\u044b \u043f\u0440\u043e\u0435\u0445\u0430\u0442\u044c \u043c\u0430\u0440\u0448\u0440\u0443\u0442 \u0434\u043e \u043a\u043e\u043d\u0446\u0430 \n\u041f\u0440\u0430\u0432\u0438\u043b\u0430 \u0433\u0440\u0443\u043f\u043f\u044b: \n[#\u200balias|[#alias|vk.cc/6G01a5|vk.cc/6G01a5] |[#alias|vk.cc/6G01a5|vk.cc/6G01a5] ]< < \u0440\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0443\u044e \u043f\u043e\u0447\u0438\u0442\u0430\u0442\u044c! \n\u041f\u043e\u0436\u0435\u0440\u0442\u0432\u043e\u0432\u0430\u043d\u0438\u044f: \n[#alias|vk.com/donut/community77|vk.com/donut/community77] \n\u041c\u0430\u0433\u0430\u0437\u0438\u043d \u0441 \u041c\u0435\u0440\u0447\u0435\u043c: \n[#alias|ozon.ru/t/VGarPg|ozon.ru/t/VGarPg] \n\u0410\u043d\u043e\u043d\u0441\u044b \u0432 \u0422\u0435\u043b\u0435\u0433\u0440\u0430\u043c\u0435: \n[#alias|t.me/club77go|t.me/club77go] \n\u0427\u0430\u0442 \u0432 \u0422\u0435\u043b\u0435\u0433\u0440\u0430\u043c\u0435: \n[#alias|t.me/rollerclub77|t.me/rollerclub77] \n\u0427\u0430\u0442 VK: \n\u041d\u0430 \u0433\u043b\u0430\u0432\u043d\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u0441\u0442\u0432\u0430 \n#\u0440\u043e\u043b\u043b\u0435\u0440\u043a\u043b\u0430\u043177 #\u0440\u043e\u043b\u043b\u0435\u0440club77 #club77 #potap"
+        }
+    ],
+    "can_edit": 1,
+    "created_by": 15544612,
+    "can_delete": 1,
+    "donut": {
+        "is_donut": false
+    },
+    "comments": {
+        "count": 0
+    },
+    "marked_as_ads": 0,
+    "hash": "FVsBuBT1fh8dRKuh7uoCxbNW8q0",
+    "type": "post",
+    "attachments": [],
+    "date": 1744574372,
+    "from_id": -118577600,
+    "header": {
+        "photo": {
+            "source_id": -118577600
+        },
+        "title": {
+            "source_id": -118577600
+        },
+        "descriptions": []
+    },
+    "id": 282,
+    "is_favorite": false,
+    "reaction_set_id": "reactions",
+    "owner_id": -118577600,
+    "post_type": "post",
+    "text": ""
+}
