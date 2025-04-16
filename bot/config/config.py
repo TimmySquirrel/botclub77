@@ -2,7 +2,7 @@
 log_pattern= u'%(asctime)s #%(levelname)-8s #FUNC:%(funcName)-20s[LINE:%(lineno)-3d]MSG:"%(message)s"' 
 #путь к папке куда будет писаться лог
 log_path = 'logs'
-#делиметр для пути (на Linuxd в другую сторону, изменить)
+#делиметр для пути (на Linux в другую сторону? изменить)
 delimetr = '/'
 #имя файла лога
 log_file_name = 'log.log'
