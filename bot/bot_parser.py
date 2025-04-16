@@ -3,8 +3,8 @@ import re, html, logging
 logger = logging.getLogger(__name__)
 
 _PVK = r'\[((?:id|club|event){1}\d+.*)\|(.*)\]'
-_PAlias = r'\[#alias\|(.*)\|(.*)\]'
-_POther = r'\[(https://.*)\|(.*)\]'
+_PAlias = r'\[#alias\|(.*?)\|(.*?)\]'
+_POther = r'\[((?:https://|vk.com).*)\|(.*)\]'
 _PSimOther = r'\[.*(https://.*)\]'
 
 
