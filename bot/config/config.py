@@ -17,4 +17,10 @@ get_updates_offset = -50
 
 parse_mode = 'HTML'
 
+major_ver = 1
+minor_ver = 0
+micro_ver = 4
+
+version = '{}.{}.{:03d}'.format(major_ver, minor_ver, micro_ver)
+
 url_4_tgbot = "https://api.telegram.org/bot"

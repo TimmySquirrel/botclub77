@@ -3,8 +3,6 @@ from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
 from config.bot_config import token_telegram, token_vk, group_id, channel_id 
 from config.config import *
 
-# version 1.0.002
-
 tg_url = url_4_tgbot + token_telegram
 logger = logging.getLogger(__name__)
 
@@ -156,7 +154,9 @@ if __name__ == '__main__':
     logging.basicConfig(format = log_pattern, level = log_level, filename = log_path + delimetr + log_file_name)
     count_inter = 0
     bad_iter = 0
+    logger.info(f'Bot version[{version}] start')
     while True:
+        logger.info('='*100)
         count_inter += 1
         try:
             logger.info(f'Start iteration[T:{count_inter}][B:{bad_iter}] ...')
@@ -172,4 +172,3 @@ if __name__ == '__main__':
             bad_iter += 1
             time.sleep(10)
             pass
-        logger.info('='*60)
