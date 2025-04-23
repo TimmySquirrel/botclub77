@@ -28,12 +28,12 @@ def ReplaceLink4MSG(aString: str, aMode)->str:
 def ReplaceLink4Photo(aString: str)->str:
     logger.info('ReplaceLink4Photo...')
     try:
-        aString = RepVKLink(aString, r'[\2](https://vk.com/\1)')
-        aString = RepAlias(aString, r'(\2)') 
-        aString = RepOther(aString, r'[\2](\1)') 
+        aString = RepVKLink(aString, r'\2(https://vk.com/\1)')
+        aString = RepAlias(aString, r'\2') 
+        aString = RepOther(aString, r'[\2](\1)')
         aString = RepSim(aString, r'(\1)')
     except Exception as error:
-        logger.error(f'ReplaceLink4MSG[{type(error)}:{error}]') 
+        logger.error(f'ReplaceLink4Photo[{type(error)}:{error}]') 
     finally:
         return aString 
 

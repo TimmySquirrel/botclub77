@@ -4,9 +4,9 @@ log_pattern= u'%(asctime)s #%(levelname)-8s #FUNC:%(funcName)-20s[LINE:%(lineno)
 log_path = 'logs'
 #делиметр для пути (на Linux в другую сторону? изменить)
 delimetr = '/'
-#имя файла лога
+#имя файла логаы
 log_file_name = 'log.log'
-#настройка видимости лога 10 с DEBUG 20 без DEBUG(param for production)
+#настройка видимости лога 10 с DEBUG 20 без DEBUG(param for production) 30 WARNING и выше
 log_level = 20 
 #ожидание перед отправкой продолжения
 limit_timeout = 5 
@@ -14,13 +14,12 @@ limit_timeout = 5
 max_len_msg = 1024 
 #кол-во топиков для поиска поста (должно быть отрицательным чтоб считать с конца)
 get_updates_offset = -50 
-
+# мод парсинга может быть HTML или 
 parse_mode = 'HTML'
-
+# версионость
 major_ver = 1
 minor_ver = 0
-micro_ver = 4
-
+micro_ver = 5
 version = '{}.{}.{:03d}'.format(major_ver, minor_ver, micro_ver)
 
 url_4_tgbot = "https://api.telegram.org/bot"
