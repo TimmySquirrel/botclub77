@@ -1,0 +1,1 @@
+COLUMN_BY_TABLE = "SELECT column_name\n\tFROM information_schema.columns\n\tWHERE table_name = '%s';"
