@@ -1,1 +1,1 @@
-COLUMN_BY_TABLE = "SELECT column_name\n\tFROM information_schema.columns\n\tWHERE table_name = '%s';"
+COLUMN_BY_TABLE = "SELECT column_name name, udt_name type, coalesce(character_maximum_length, numeric_precision) size\n\tFROM information_schema.columns\n\tWHERE table_name = '%s';"
