@@ -6,6 +6,11 @@ from config.config import *
 tg_url = url_4_tgbot + token_telegram
 logger = logging.getLogger(__name__)
 
+
+def isDonat(aJSON:dict)-> bool: 
+    logger.debug('Check is donat...')
+    return aJSON['donut']['is_donut'] if aJSON.get('donut') else False 
+
 # формируем свой JSON параметров по полученому из VK
 def GetValuesJSON(aJSON:dict):
     # инициализируем структуру данных на выходе
@@ -44,7 +49,7 @@ def GetMsgFromVK(token_vk: str):
     for event in longpoll.listen():
         if event.type == VkBotEventType.WALL_POST_NEW:
             json_file = event.object
-            if json_file['from_id'] == group_id * -1:
+            if (json_file['from_id'] == group_id * -1) and not isDonat(json_file):
                 logger.info('GetMsgFromVK finish.')
                 return GetValuesJSON(json_file['copy_history'][0]) if json_file.get('copy_history') else GetValuesJSON(json_file)
     
