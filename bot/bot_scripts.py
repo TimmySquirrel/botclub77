@@ -34,9 +34,13 @@ def GetValuesJSON(aJSON:dict):
     return Result
 
 # Ищем перенос
-def GetIndexLastNewLine(text: str):
-    a = text.rfind('\n', 0, max_len_msg)
-    return a if a != -1 else max_len_msg
+def GetIndexLastNewLine(text: str, max_len: int)-> int:
+    a = text.rfind('\n', 0, max_len)
+    return a if a != -1 else max_len
+
+def GetIndexMainTextEnd(text: str, max_len: int)-> int:
+    a = GetIndexLastNewLine(text, max_len)
+    return a if len(pe.ReplaceLink4Photo(text[:a])) <= max_len else GetIndexMainTextEnd(text, max_len - step_size) 
 
 # Получаем пост из ВК
 def GetMsgFromVK(token_vk: str):
@@ -67,13 +71,13 @@ def SendMSG2Telegram(url: str, post_param: dict, chat_id: int):
         PrintLog(r, 'SendMSG2Telegram', '/sendMessage')
         post_param['text'] = ''
     else:
-        Len = len(text)
+        Len = len(text) 
         logger.debug(f'Upload msg len {Len}')
         if Len > max_len_msg:
-            a = GetIndexLastNewLine(text)
+            a = GetIndexMainTextEnd(text, max_len_msg)
             logger.debug(f'Main msg len {a}')
             post_param['text'] = '[Продолжение...]\n' + text[a:]
-            text = text[:a] 
+            text = text[:a]
             Len = len(post_param['text'])
             logger.debug(f'Rep msg len[{Len}]')
         else:
@@ -172,8 +176,11 @@ if __name__ == '__main__':
                     time.sleep(limit_timeout)
                     MessageReplies(tg_url, AnswerTG)
             logger.info(f'Finish iteration[T:{count_inter}][B:{bad_iter}].')
+        except (requests.exceptions.ReadTimeout, requests.exceptions.ConnectionError) as error:
+            logger.warning(error)
+            time.sleep(60)
         except Exception as error:
-            logger.warning(f'Something is wrong...[{type(error)}:{error}]')
+            logger.error(f'Something is wrong...[{type(error)}:{error}]')
             bad_iter += 1
             time.sleep(10)
             pass
